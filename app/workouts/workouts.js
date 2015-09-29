@@ -10,16 +10,16 @@ var minor_fifths = ['A', 'E', 'B', 'F♯', 'C♯', 'G♯', 'D♯', 'B♭', 'F', 
 var major_chromatic = ['C', 'D♭', 'D', 'E♭', 'E', 'F', 'G♭', 'G', 'A♭', 'A', 'B♭', 'B'];
 var minor_chromatic = ['A', 'B♭', 'B', 'C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯'];
 
-angular.module('myApp.scale', ['ngRoute', 'ui.bootstrap'])
+angular.module('myApp.workouts', ['ngRoute', 'ui.bootstrap'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/scale', {
-    templateUrl: 'scale/scale.html',
-    controller: 'ScaleCtrl'
+  $routeProvider.when('/workouts', {
+    templateUrl: 'workouts/workouts.html',
+    controller: 'WorkoutsCtrl'
   });
 }])
 
-.controller('ScaleCtrl', ['$scope', 'ngToast', function($scope, ngToast) {
+.controller('WorkoutsCtrl', ['$scope', 'ngToast', function($scope, ngToast) {
   $scope.debug = false;
 
   $scope.localStorage = localStorage;

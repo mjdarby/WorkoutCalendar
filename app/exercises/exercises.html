@@ -1,0 +1,90 @@
+<accordion>
+  <accordion-group is-open="accordionStatus.open">
+    <accordion-heading>
+      Add exercise<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': accordionStatus.open, 'glyphicon-chevron-right': !accordionStatus.open}"></i>
+    </accordion-heading>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          <h4>Exercise</h4>
+          <input type="text" class="form-control" placeholder="Best exercise ever..?" ng-model="newExercise.title"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h4>Starting Sets</h4>
+          <input type="text" class="form-control" ng-model="newExercise.sets"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h4>Starting Reps</h4>
+          <input type="text" class="form-control" ng-model="newExercise.reps"/>
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="button" class="btn btn-default" ng-click="addToList()">Add exercise</button>
+        </div>
+      </div>
+    </div>
+  </accordion-group>
+</accordion>
+<div>
+  <div ng-show="!exercises.length">
+    <h3>
+    Add some exercises!
+    </h3>
+  </div>
+  <div ng-show="exercises.length">
+    <h4>Exercises</h4>
+    <accordion>
+      <accordion-group ng-repeat="exercise in exercises track by $index" is-open="exercise.open">
+        <accordion-heading>
+          {{exercise.title}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': exercise.open, 'glyphicon-chevron-right': !exercise.open}"></i>
+        </accordion-heading>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-12">
+              <h4>Exercise</h4>
+              <input type="text" class="form-control" ng-model="exercise.title" ng-change="updateExercise()"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <h4>Practice Tempo</h4>
+              <input type="text" class="form-control" ng-model="exercise.practiceTempo" ng-change="updateExercise()"/>
+            </div>
+            <div class="col-xs-6">
+              <h4>Target Tempo</h4>
+              <input type="text" class="form-control" ng-model="exercise.targetTempo" ng-change="updateExercise()"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <h4>Bars to Practice</h4>
+              <input type="text" class="form-control" ng-model="exercise.bars" ng-change="updateExercise()"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <h4>Notes</h4>
+              <textarea rows="3" class="form-control" ng-model="exercise.notes" ng-change="updateExercise()"></textarea>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div>
+          <button type="button" class="btn btn-danger" ng-click="removeFromList(exercise)">Remove exercise</button>
+          <span ng-show="exercise.done">
+            <button type="button" class="btn btn-info" ng-click="markUnmarkAsDone(exercise)">Mark as Undone</button>
+          </span>
+          <span ng-show="!exercise.done">
+            <button type="button" class="btn btn-success" ng-click="markUnmarkAsDone(exercise)">Mark as Done</button>
+          </span>
+        </div>
+      </accordion-group>
+    </accordion>
+  </div>
+</div>

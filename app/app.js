@@ -7,8 +7,8 @@ angular.module('myApp', [
   'ngAnimate',
   'ngToast',
   'myApp.home',
-  'myApp.scale',
-  'myApp.pieces',
+  'myApp.exercises',
+  'myApp.workouts',
   'myApp.exportimport'
 ]).
 config(['$routeProvider', '$compileProvider', 'ngToastProvider', function($routeProvider, $compileProvider, ngToastProvider) {

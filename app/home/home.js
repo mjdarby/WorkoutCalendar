@@ -11,5 +11,4 @@ angular.module('myApp.home', ['ngRoute', 'ui.bootstrap'])
 
 .controller('HomeCtrl', ['$scope', function($scope) {
   $scope.debug = false;
-
 }]);

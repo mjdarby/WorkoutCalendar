@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Scaler</title>
+  <title>WorkoutCalendar</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
@@ -19,7 +19,7 @@
 </head>
 <body>
   <toast></toast>
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle"
@@ -34,8 +34,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse" collapse="navbarCollapsed">
           <ul class="nav navbar-nav">
-            <li><a href="#/scale">Scales</a></li>
-            <li><a href="#/pieces">Pieces</a></li>
+            <li><a href="#/exercises">Exercises</a></li>
+            <li><a href="#/workouts">Workouts</a></li>
           </ul>
           <ul ng-controller="ExportImportController" class="nav navbar-nav pull-right">
             <li><a download="content.txt" ng-href="{{ url }}">Export data</a></li>
@@ -56,9 +56,9 @@
   <footer class="footer">
     <div class="container">
       <p class="text-muted">
-        © 2015 <a href="http://mjdarby.net">Matthew Darby</a>. Mad props to <a href="https://angularjs.org/">AngularJS</a>, <a href="http://getbootstrap.com/">Bootstrap</a>, <a href="https://bootswatch.com">Bootswatch</a> and Brooklyn Nine-Nine
+        © 2015 <a href="http://mjdarby.net">Matthew Darby</a>. Mad props to <a href="https://angularjs.org/">AngularJS</a>, <a href="http://getbootstrap.com/">Bootstrap</a>, <a href="https://bootswatch.com">Bootswatch</a> and Trailer Park Boys
         <br/>
-        Fork me on <a href="https://github.com/mjdarby/Scaler/">Github</a>!
+        Fork me on <a href="https://github.com/mjdarby/WorkoutCalendar/">Github</a>!
       </p>
     </div>
   </footer>
@@ -76,8 +76,8 @@
   <script src="ui-bootstrap-tpls-0.13.0.min.js"></script>
   <script src="app.js"></script>
   <script src="exportimport/exportimport.js"></script>
-  <script src="scale/scale.js"></script>
   <script src="home/home.js"></script>
-  <script src="pieces/pieces.js"></script>
+  <script src="exercises/exercises.js"></script>
+  <script src="workouts/workouts.js"></script>
 </body>
 </html>
