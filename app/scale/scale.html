@@ -1,0 +1,127 @@
+<div ng-show="debug">
+LastUsedDate == {{lastUsedDate.valueOf()}}
+</div>
+<div ng-show="debug">
+Today == {{today.valueOf()}}
+</div>
+<div ng-show="debug">
+{{tempos}}
+</div>
+<div ng-show="debug">
+{{doneToday}}
+</div>
+<accordion>
+  <accordion-group is-open="accordionStatusQuickAdd.open">
+    <accordion-heading>
+      Quick Add Key List<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': accordionStatusQuickAdd.open, 'glyphicon-chevron-right': !accordionStatusQuickAdd.open}"></i>
+    </accordion-heading>
+    <div>
+      <h4>Starting tempo</h4>
+      <input type="text" class="form-control" numbers-only ng-model="tempos.normal"/>
+    </div>
+    <div>
+      <h4>Add All Majors</h4>
+      <button type="button" class="btn btn-default" ng-click="addAllToList(majors, 'major')">Go!</button>
+    </div>
+    <div>
+      <h4>Add All Natural Minors</h4>
+      <button type="button" class="btn btn-default" ng-click="addAllToList(minors, 'natural minor')">Go!</button>
+    </div>
+    <div>
+      <h4>Add All Harmonic Minors</h4>
+      <button type="button" class="btn btn-default" ng-click="addAllToList(minors, 'harmonic minor')">Go!</button>
+    </div>
+    <div>
+      <h4>Add All Melodic Minors</h4>
+      <button type="button" class="btn btn-default" ng-click="addAllToList(minors, 'melodic minor')">Go!</button>
+    </div>
+  </accordion-group>
+  <accordion-group is-open="accordionStatusAddKey.open">
+    <accordion-heading>
+      Add Key<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': accordionStatusAddKey.open, 'glyphicon-chevron-right': !accordionStatusAddKey.open}"></i>
+    </accordion-heading>
+    <div>
+      <h4>Starting tempo</h4>
+      <input type="text" class="form-control" numbers-only ng-model="tempos.normal"/>
+    </div>
+    <div>
+      <h4>Add Majors</h4>
+      <button type="button" class="btn btn-default" ng-repeat="item in majors" ng-click="addToList(item, 'major')">{{item}}</button>
+    </div>
+    <div>
+      <h4>Add Natural Minors</h4>
+      <button type="button" class="btn btn-default" ng-repeat="item in minors" ng-click="addToList(item, 'natural minor')">{{item}}</button>
+    </div>
+    <div>
+      <h4>Add Harmonic Minors</h4>
+      <button type="button" class="btn btn-default" ng-repeat="item in minors" ng-click="addToList(item, 'harmonic minor')">{{item}}</button>
+    </div>
+    <div>
+      <h4>Add Melodic Minors</h4>
+      <button type="button" class="btn btn-default" ng-repeat="item in minors" ng-click="addToList(item, 'melodic minor')">{{item}}</button>
+    </div>
+   </accordion-group>
+</accordion>
+<div>
+  <div ng-show="!selected.length">
+    <h3>
+    Add some keys and let's get practicing!
+    </h3>
+  </div>
+  <div ng-show="selected.length">
+    <h3>Practice list</h3>
+    <p>Remember to play both scale and arpeggio (if applicable)! <small>Keys done today: {{doneToday}}</small> <button type="button" class="btn btn-link" ng-click="resetDoneToday()">Reset done counter</button></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+          <h4>Tempo increase</h4>
+          <div>
+            <input type="text" class="form-control" ng-model="tempoIncrease" numbers-only ng-change="changeTempoIncrease()"/>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <h4>Keys per Day</h4>
+          <div>
+            <input type="text" class="form-control" ng-model="keysPerDay" numbers-only ng-change="changeKeysPerDay()"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" ng-show="forToday.length">
+      <h4>Keys for Today</h4>
+      <div class="row">
+          <div class="col-xs-6 col-sm-4" ng-repeat="item in forToday track by $index">
+            <h5><strong>Key</strong><br/>{{item.key}}</h5>
+            <h5><strong>Tempo</strong><br/>{{item.tempo}}</h5>
+            <button type="button" class="btn btn-success" ng-click="increaseTempo(item)">Done!</button>
+            <button type="button" class="btn btn-danger" ng-click="removeFromList(item)">Remove</button>
+            <br/>
+            <button type="button" class="btn btn-default" ng-show="showLeft(item)" ng-click="moveLeft(item)">
+              <span class="glyphicon glyphicon-menu-left"></span>
+            </button>
+            <button type="button" class="btn btn-default" ng-show="showRight(item)" ng-click="moveRight(item)">
+              <span class="glyphicon glyphicon-menu-right"></span>
+            </button>
+          </div>
+          <br/>
+      </div>
+    </div>
+    <div class="container" ng-show="forTheFuture.length">
+      <h4>Keys for the Future</h4>
+      <div class="row">
+        <div class="col-xs-6 col-sm-4" ng-repeat="item in forTheFuture track by $index">
+          <h5><strong>Key</strong><br/>{{item.key}}</h5>
+          <h5><strong>Tempo</strong><br/>{{item.tempo}}</h5>
+          <button type="button" class="btn btn-danger" ng-click="removeFromList(item)">Remove</button>
+            <br/>
+            <button type="button" class="btn btn-default" ng-show="showLeft(item)" ng-click="moveLeft(item)">
+              <span class="glyphicon glyphicon-menu-left"></span>
+            </button>
+            <button type="button" class="btn btn-default" ng-show="showRight(item)" ng-click="moveRight(item)">
+              <span class="glyphicon glyphicon-menu-right"></span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
