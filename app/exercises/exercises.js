@@ -56,4 +56,11 @@ angular.module('myApp.exercises', ['ngRoute', 'ui.bootstrap'])
     ngToast.danger({content : "Deleted '" + item.title + "'"});
   };
 
+  $scope.duplicate = function(item) {
+    // Super lame copy logic
+    $scope.exercises.push(JSON.parse(JSON.stringify(item)));
+    $scope.updateExercise();
+    ngToast.create("Duplicated '" + item.title + "'");
+  };
+
 }]);
